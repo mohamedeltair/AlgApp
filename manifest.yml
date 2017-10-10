@@ -6,4 +6,3 @@ applications:
   routes:
   - route: agile1041.eu-gb.mybluemix.net/
   disk_quota: 1024M
-  services:
