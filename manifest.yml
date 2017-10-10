@@ -1,0 +1,9 @@
+applications:
+- path: .
+  memory: 512M
+  instances: 1
+  name: agile1041
+  routes:
+  - route: agile1041.eu-gb.mybluemix.net/
+  disk_quota: 1024M
+  services:
