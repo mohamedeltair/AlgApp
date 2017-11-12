@@ -19,7 +19,9 @@
     "socket.io-client": "*",
 	"watson-developer-cloud": "^2.39.0",
     "watson-react-components": "^0.6.10",
-	"formidable":"*"
+	"formidable":"*",
+	"react":"*",
+	"react-dom":"*"
   },
   "repository": {},
   "engines": {

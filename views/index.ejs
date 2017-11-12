@@ -1,9 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="/socket.io/socket.io.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  <!--background-image: url('/css/searchicon.png');-->
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-family: "Tw Cen MT Condensed";
+  font-size: 15px;
+}
+
+#myTable th, #myTable td {
+  padding: 12px;
+}
+
+#myTable th, #myTable td {
+  border: 1px solid #ddd;
+}
+
+#myTable td:hover {
+  background-color: #d3e9ff;
+}
+thead[class*="ant-table-thead"] th{
+  background-color: #9C3468;
+  color:#ffffff;
+  text-align:center;
+}
+
+th.column1,
+td.column1 {
+  color:#0e0e0e;
+}
+.bott {
+	display: inline-block;
+	margin= 10vw;
+}
+.divi {
+	display: inline-block;
+	width: 5vw;
+}
+</style>
 </head>
 <body>
-	<script type="text/javascript" src="/scripts/index.js"></script>
+
+<input type="text" id="myInput"  placeholder="Filter days ..." title="Type in a day">
+
+		<div id="tablediv">
+		</div>
+		<h3 class="bott">Modify Schedule</h3>
+		<div class="divi"></div>
+		<h3 class="bott">Day</h3>
+		<select class="bott" id="day"></select>
+		<div class="divi"></div>
+		<h3 class="bott">Course</h3>
+		<select class="bott" id="sub"></select>
+		<div class="divi"></div>
+		<h3 class="bott">Room</h3>
+		<select class="bott" id="room"></select>
+		<div class="divi"></div>
+		<h3 class="bott">First Slot</h3>
+		<select class="bott" id="fs"></select>
+		<div class="divi"></div>
+		<h3 class="bott">Last Slot</h3>
+		<select class="bott" id="ls"></select>
+		<div class="divi"></div>
+		<button id="modify">Modify</button>
+		<button id="back">Back</button>
+		
+</div>		
+
+<script src="/scripts/index.js"></script>
+
 </body>
 </html>

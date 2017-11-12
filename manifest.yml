@@ -1,8 +1,11 @@
 applications:
 - path: .
-  memory: 512M
+  memory: 256M
   instances: 1
-  name: agile1041
+  name: timetableG3n
   routes:
-  - route: agile1041.eu-gb.mybluemix.net/
-  disk_quota: 1024M
+  - route: timetableG3n.eu-gb.mybluemix.net/
+  - route: timetableG3n.eu-gb.mybluemix.net/index
+  - route: timetableG3n.eu-gb.mybluemix.net/admin
+  - route: timetableG3n.eu-gb.mybluemix.net/admin/addcourse
+  disk_quota: 512M

@@ -28,33 +28,19 @@ listener.sockets.on('connection',
         socket.emit('connected', {"status": "connected"});
         socket.on('credentials', function(data) {
             var username = data.username;
-			var password = data.password;
-			if(username==="nour"&& password=="1234") {
-				socket.emit('response', {"status": "valid"});
-			}
-			else {
-				socket.emit('response', {"status": "invalid"});
-			}
+            var password = data.password;
         });
-		socket.on("start", function(data) {
-			/*fs.readFile("./public/files/table.txt", 'utf8', function(err, data2) {
-			  //if (err) socket.emit("start", err);
-			  //var obj = JSON.parse(data2);
-			  socket.emit("start", data2);
-			});*/
-			var obj = JSON.parse(fs.readFileSync('./public/files/table.txt', 'utf8'));
-			socket.emit("start", obj);
-		});
-		socket.on("edit", function(data) {
-			fs.unlinkSync("./public/files/table.txt");
-			fs.writeFileSync('./public/files/table.txt', data);
-		});
+
+        if(username==="nour"&& password=="1234") {
+            socket.emit('response', {"status": "valid"});
+        }
+        else {
+            socket.emit('response', {"status": "invalid"});
+        }
     });
 
 var index = require('./routes/index');
-var Login = require('./routes/Login');
-var admin = require('./routes/admin');
-var addCourse = require('./routes/addCourse');
+var home = require('./routes/Login');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -66,13 +52,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/style', express.static(path.join(__dirname, '/views/style')));
 
-app.use('/index', index);
-app.use('/', Login);
-app.use('/admin', admin);
-app.use('/admin/addcourse',addCourse);
+app.use('/', index);
+app.use('/Login', Login);
 
 app.use(function(req, res, next) {
     var err = new Error("Not Found");
     err.status=404;
     next(err);
 });
+
