@@ -7,8 +7,10 @@ function Validate(){
 
 }
 socket.on('response', function(data) {
-	alert(data.status);
-	if(data.status == "valid")
+	if(data.type == "invalid"){
+        alert(data.status);
+	}
+	else if(data.type == "admin")
 		window.location.href= site+"/admin";
 });
 document.getElementById("submit").addEventListener("click", Validate);

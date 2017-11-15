@@ -27,13 +27,20 @@ listener.sockets.on('connection',
     function(socket){
         socket.emit('connected', {"status": "connected"});
         socket.on('credentials', function(data) {
+        	var flag = false;
+            var credentials = JSON.parse(fs.readFileSync('./public/files/credentials.txt', 'utf8'));
             var username = data.username;
-			var password = data.password;
-			if(username==="nour"&& password=="1234") {
-				socket.emit('response', {"status": "valid"});
+            var password = data.password;
+            for(var i=0; i<credentials.credentials.length; i++){
+				var object = credentials.credentials[i];
+				if(object.username == username && object.password == password){
+                    socket.emit('response', {"type": object.type});
+                    flag = true;
+                    break;
+                }
 			}
-			else {
-				socket.emit('response', {"status": "invalid"});
+			if(!flag) {
+				socket.emit('response', {"type": "invalid"});
 			}
         });
 		socket.on("start", function(data) {
