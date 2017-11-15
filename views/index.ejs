@@ -2,51 +2,9 @@
 <html>
 <head>
 <script src="/socket.io/socket.io.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="style/timetable.css" />
 <style>
-* {
-  box-sizing: border-box;
-}
-
-#myInput {
-  <!--background-image: url('/css/searchicon.png');-->
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-#myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-family: "Tw Cen MT Condensed";
-  font-size: 15px;
-}
-
-#myTable th, #myTable td {
-  padding: 12px;
-}
-
-#myTable th, #myTable td {
-  border: 1px solid #ddd;
-}
-
-#myTable td:hover {
-  background-color: #d3e9ff;
-}
-thead[class*="ant-table-thead"] th{
-  background-color: #9C3468;
-  color:#ffffff;
-  text-align:center;
-}
-
-th.column1,
-td.column1 {
-  color:#0e0e0e;
-}
 .bott {
 	display: inline-block;
 	margin= 10vw;
@@ -59,8 +17,10 @@ td.column1 {
 </head>
 <body>
 
-<input type="text" id="myInput"  placeholder="Filter days ..." title="Type in a day">
-
+		<div id="searchContainer" style="height:50px">
+			<input type="text" id="myInput" onkeyup="searchTable()" placeholder="Search table ..." title="Type in search parameter">
+        </div>
+		
 		<div id="tablediv">
 		</div>
 		<h3 class="bott">Modify Schedule</h3>

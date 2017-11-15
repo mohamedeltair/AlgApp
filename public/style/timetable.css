@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('https://www.w3schools.com/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 200px;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+-webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    text-align: center;
+}
+#searchContainer{
+display: flex;
+justify-content: center;
+}
+
+#myInput:focus {
+    width: 30%;
+}
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-family: "Tw Cen MT Condensed";
+  font-size: 15px;
+}
+
+#myTable th, #myTable td {
+  padding: 12px;
+}
+
+#myTable th, #myTable td {
+  border: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable td:hover {
+  background-color: #d3e9ff;
+}
+thead[class*="ant-table-thead"] th{
+  background-color: #9C3468;
+  color:#ffffff;
+  text-align:center;
+}
+
+th.column1,
+td.column1 {
+  color:#0e0e0e;
+}
+.icon {
+  color:#999;
+}
+.icon:hover{
+color:rgba(0, 0, 0, 0.65);
+}
+
+
+
+
+
+
+.dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.ok {
+    color: #337ab7;
+    padding-top: 13px;
+    padding-bottom: 13px;
+	padding-left: 12px;
+    text-decoration: none;
+}
+.reset {
+    color: #337ab7;
+    padding-top: 13px;
+    padding-bottom: 13px;
+	padding-right: 12px;
+    text-decoration: none;
+}
+.ok:hover {
+color:#23527c;
+cursor: pointer;
+}
+.reset:hover {
+color:#23527c;
+cursor: pointer;
+}
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+
+.highlight
+{
+background-color:yellow;
+}
+
+@media only screen and (max-width: 1400px) {
+  #filter{
+    display: none;
+  }
+}

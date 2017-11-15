@@ -6,19 +6,32 @@ socket.on("start", function(data) {
 	var slots = {start:'08:00',duration:'1:00',count:15,breaks:[4,8,12],break_duration:'0:20'};
 
 	function tableCreate() {
-		var body = document.getElementById('tablediv');
-		var tbl = document.createElement('table');
-		tbl.setAttribute("id","myTable");
-		
-		var thd = document.createElement('thead');
-		var row = document.createElement('tr');
-		thd.setAttribute("class","ant-table-thead");
-		var head = document.createElement('th')
-		head.setAttribute('rowspan',2);
-		head.setAttribute('colspan',1);
-		head.appendChild(document.createTextNode('Day'));
-		row.appendChild(head);
-		var start = slots.start,brk=0,end=undefined;
+	var body = document.getElementById('tablediv');
+    var tbl = document.createElement('table');
+
+	tbl.style.zIndex='1';
+	tbl.setAttribute("id","myTable");
+
+    var thd = document.createElement('thead');
+	var row = document.createElement('tr');
+	thd.setAttribute("class","ant-table-thead");
+	var head = document.createElement('th')
+	head.setAttribute('rowspan',2);
+	head.setAttribute('colspan',1);
+    head.appendChild(document.createTextNode('Day'));
+	var a = document.createElement('a');
+	a.href="#";
+	a.id="filter";
+	var filter_icon = document.createElement('span');
+	filter_icon.style.fontSize="10px";
+	filter_icon.title="Filter days";
+	filter_icon.className="glyphicon glyphicon-filter icon";
+	a.addEventListener("click",filterDays);
+	filter_icon.style.marginLeft='4px';
+	a.appendChild(filter_icon);
+	head.appendChild(a);
+	row.appendChild(head);
+	var start = slots.start,brk=0,end=undefined;
 		for(var i=0;i<2;i++)
 			{
 				if(i>0)
@@ -113,19 +126,66 @@ socket.on("start", function(data) {
 			tbd.appendChild(row);
 		}
 	}
+	function createFilter()
+{
+	var body = document.getElementById('tablediv');
+    var menu = document.createElement('div');
+	menu.style.position='absolute';
+
+	var filterRect = document.getElementById('filter').getBoundingClientRect();
+	console.log(filterRect.right+" "+filterRect.bottom);
+	menu.style.left=filterRect.right+'px';
+	menu.style.top=filterRect.bottom+'px';
+	menu.style.zIndex='2';
+	menu.id="myDropdown";
+	menu.className="dropdown-content";
+	for(var i=0;i<days.length;i++)
+	{
+		var item = document.createElement('a');
+		var checkbox = document.createElement('input');
+		checkbox.type = "checkbox";
+    checkbox.style.cursor="pointer";
+		checkbox.id="chk"+i;
+		var label = document.createElement('span');
+		label.style.paddingLeft='12px';
+		label.innerHTML=days[i];
+		item.appendChild(checkbox);
+		item.appendChild(label);
+		menu.appendChild(item);
+	}
+	var btns = document.createElement('div');
+	btns.style.borderTop='solid 1px';
+	btns.setAttribute('class','ant-table-filter-dropdown-btns');
+	var OK_btn = document.createElement('span');
+	OK_btn.innerHTML="OK";
+	OK_btn.className="ok";
+	OK_btn.style.float='left';
+	OK_btn.addEventListener('click',fdays);
+	var Reset_btn = document.createElement('span');
+	Reset_btn.innerHTML="Reset";
+	Reset_btn.className="reset";
+	Reset_btn.style.float='right';
+	Reset_btn.addEventListener('click',rdays);
+	btns.appendChild(OK_btn);
+	btns.appendChild(Reset_btn);
+	menu.appendChild(btns);
+	body.appendChild(menu);
+}
+
 	var input = document.getElementById("myInput");
 	var inputcount=0,first=[];
 	for(var i=0;i<days.length-1;i++)
 		first.push(false);
-function filterDays() {
+function searchTable() {
   var  filter, table, tr, td, i;
+  var checked=[];
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   if(input.value.length<inputcount)
   {
 	  for(i=3;i<tr.length;i++)
 	  {   if(first[i-3])
-		  {
+		{
 			  var k=0,cnt=0;
 			  for(var j=0;j<tr[i].childNodes.length;j++)
 			{
@@ -136,31 +196,38 @@ function filterDays() {
 					k++;
 				}
 				k+=tr[i].childNodes[j].colSpan;
-				
+
 			}
-		  first[i-3]=false; 
+		  first[i-3]=false;
 		}
 	  }
   }
   inputcount = input.value.length;
   filter = input.value.toUpperCase();
   var z=true;
-  for (i = 0; i < tr.length; i++) {
-    tds = tr[i].getElementsByTagName("td");
-    td = tds[0];
-	if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-		  
+  for (i = 2; i < tr.length; i++) {
+	  checked.push(false);
+	tds = tr[i].getElementsByTagName("td");
+	var spans = 0;
+	for(var l=1;l<tr[i].childNodes.length;l++){
+    td = tds[l];
+	var text = td.childNodes[0].innerHTML;
+	if (td&&td.childNodes[0]&&text) {
+		text = courses[i-2][spans].name;
+		var roomtext = courses[i-2][spans].room;
+		var index = text.toUpperCase().indexOf(filter);
+		var roomindex = roomtext.toUpperCase().indexOf(filter);
+		if (index > -1 || roomindex>-1) {
 		if(i===2)z=false;
 		if(z && i>2 && inputcount>=1 && !first[i-3])
-		{	
+		{
 			var k=0,cnt=0;
 			for(var j=0;j<tr[i].children.length;j++){
 			if(k===slots.breaks[cnt]){
 			var ntd = document.createElement("td");
 			ntd.appendChild(document.createTextNode('break'));
 			tr[i].insertBefore(ntd,tr[i].children[j]);
-			
+			if(spans+1>=slots.breaks[cnt])l++;
 			cnt++;
 			j++;
 			k++;
@@ -170,12 +237,65 @@ function filterDays() {
 			}
 			first[i-3]=true;
 		}
-		tr[i].style.display = "";
-      } else {
+		if(index>-1)
+		{var innerHTML = text.substring(0,index) + "<span style='text-align: center;' class='highlight'>" + text.substring(index,index+inputcount) + "</span>" + text.substring(index + inputcount);
+        td.childNodes[0].innerHTML = innerHTML;
+		}
+    else{
+      td.childNodes[0].innerHTML = text;
+    }
+		if(roomindex>-1)
+		{var innerHTML2 = roomtext.substring(0,roomindex) + "<span style='text-align: center;' class='highlight'>" + roomtext.substring(roomindex,roomindex+inputcount) + "</span>" + roomtext.substring(roomindex + inputcount);
+        td.childNodes[2].innerHTML = innerHTML2;
+		}
+    else {
+      td.childNodes[2].innerHTML = roomtext;
+    }
+    tr[i].style.display = "";
+		checked[i]=true;
+      }
+
+	  else {
+		td.childNodes[0].innerHTML = text;
+		if(!checked[i]){
         tr[i].style.display = "none";
       }
-    }       
+	  }
+	}
+	else if(!checked[i]) tr[i].style.display = "none";
+
+	if(td.innerHTML !== "b<br>r<br>e<br>a<br>k" && td.innerHTML !== "break")
+	spans+=tds[l].colSpan;
+    }
+		if(input.value.length===0)
+			tr[i].style.display = "";
   }
+}
+function fdays()
+{
+	var tr = document.getElementById("myTable").getElementsByTagName("tr");
+	for(var i=0;i<days.length;i++)
+	{
+		var checkbox = document.getElementById("chk"+i);
+		console.log(checkbox.checked);
+		if(checkbox.checked)
+		{tr[i+2].style.display = "";
+			console.log('derp');
+		}else
+		{tr[i+2].style.display = "none";
+			console.log('herp');
+		}
+	}
+}
+function rdays()
+{
+	var tr = document.getElementById("myTable").getElementsByTagName("tr");
+	for(var i=0;i<days.length;i++)
+	{
+		var checkbox = document.getElementById("chk"+i);
+		checkbox.checked = false;
+		tr[i+2].style.display = "";
+	}
 }
 	function calcTo(from,dur)
 	{
@@ -255,10 +375,33 @@ function filterDays() {
 
 	var arr = cols();
 
-	console.log(arr);
-	tableCreate();
-	document.getElementById("myInput").addEventListener("keyup", filterDays);
+	function filterDays(event) {
+    var filter = document.getElementById("myDropdown");
+	console.log(event.clientX+" "+event.clientY);
+	filter.style.left = event.clientX.offsetX+5+"px";
+	filter.style.top = event.clientY.offsetY+5+"px";
+	filter.classList.toggle("show");
+}
 
+
+window.onclick = function(event) {
+	var divRect = document.getElementById('myDropdown').getBoundingClientRect();
+	var b = (event.clientX >= divRect.left && event.clientX <= divRect.right &&
+      event.clientY >= divRect.top && event.clientY <= divRect.bottom);
+	if (!(event.target.matches('.icon'))&&!b) {
+	var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+	tableCreate();
+	document.getElementById("myInput").addEventListener("keyup", searchTable);
+	filterCreate();
 	var sub = ["", "Agile", "Microcontrollers", "HR", "AI", "Networks", "Formal"];
 
 	function fill(sel, arr) {
