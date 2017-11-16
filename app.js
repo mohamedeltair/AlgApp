@@ -31,8 +31,8 @@ listener.sockets.on('connection',
             var credentials = JSON.parse(fs.readFileSync('./public/files/credentials.txt', 'utf8'));
             var username = data.username;
             var password = data.password;
-            for(var i=0; i<credentials.credentials.length; i++){
-				var object = credentials.credentials[i];
+            for(var i=0; i<credentials.Credentials.length; i++){
+				var object = credentials.Credentials[i];
 				if(object.username == username && object.password == password){
                     socket.emit('response', {"type": object.type});
                     flag = true;
