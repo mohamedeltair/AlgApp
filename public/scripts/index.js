@@ -126,7 +126,7 @@ socket.on("start", function(data) {
 			tbd.appendChild(row);
 		}
 	}
-	function createFilter()
+	function filterCreate()
 {
 	var body = document.getElementById('tablediv');
     var menu = document.createElement('div');
