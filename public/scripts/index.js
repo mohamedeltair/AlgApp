@@ -6,13 +6,13 @@ socket.on("start", function(data) {
 	var slots = {start:'08:00',duration:'1:00',count:15,breaks:[4,8,12],break_duration:'0:20'};
 
 	function tableCreate() {
-	var body = document.getElementById('tablediv');
+    var body = document.getElementById('tablediv');
     var tbl = document.createElement('table');
 
 	tbl.style.zIndex='1';
 	tbl.setAttribute("id","myTable");
 
-    var thd = document.createElement('thead');
+  var thd = document.createElement('thead');
 	var row = document.createElement('tr');
 	thd.setAttribute("class","ant-table-thead");
 	var head = document.createElement('th')
@@ -26,82 +26,73 @@ socket.on("start", function(data) {
 	filter_icon.style.fontSize="10px";
 	filter_icon.title="Filter days";
 	filter_icon.className="glyphicon glyphicon-filter icon";
-	a.addEventListener("click",filterDays);
+	a.addEventListener("click",myFunction2);
 	filter_icon.style.marginLeft='4px';
 	a.appendChild(filter_icon);
 	head.appendChild(a);
 	row.appendChild(head);
 	var start = slots.start,brk=0,end=undefined;
-		for(var i=0;i<2;i++)
-			{
-				if(i>0)
-					row = document.createElement('tr');
-				for(var j=0;j<slots.count;j++)
-					{
-					head = document.createElement('th')
-					head.setAttribute('class','column1');
-					head.setAttribute('colspan',1);
-					if(i===0)
-						head.appendChild(document.createTextNode(j+1));
-					else{
-						if(slots.breaks.length>brk && j+1===slots.breaks[brk])
-							{
-							end = calcTo(start,slots.break_duration);
-							brk++;
-							}
-						else
-							end = calcTo(start,slots.duration);
-						head.appendChild(document.createTextNode(start+'-'+end));
-						start = end;
-						}
-					row.appendChild(head);
-					}
-		thd.appendChild(row);
-		}
-		tbl.appendChild(thd);
-		var tbd = document.createElement('tbody');
-		tbl.appendChild(tbd);
-		body.appendChild(tbl);
-		for(var i=0;i<days.length;i++)
-		{	
-			row = document.createElement('tr');
-			row.setAttribute("id", i);
-			brk=0;
-			for(var j=0;j<slots.count+1;j++)
-			{	var td = document.createElement('td');
-				if(j==0)
+	for(var i=0;i<2;i++)
+		{
+			for(var j=0;j<slots.count;j++)
 				{
-					td.style.backgroundColor = 'rgb(156, 52, 104)';
-					td.style.color = 'rgb(255, 255, 255)';
-					td.style.textAlign = 'left';
-					td.appendChild(document.createTextNode(days[i]));
-					td.setAttribute("id", "st"+i);
-					row.appendChild(td);
-				}
+				head = document.createElement('th')
+				head.setAttribute('class','column1');
+				head.setAttribute('colspan',1);
+				if(i===0)
+					head.appendChild(document.createTextNode(j+1));
 				else{
-					td.setAttribute("class","column1");
-					if(slots.breaks.length>brk && j===slots.breaks[brk])
+					if(slots.breaks.length>brk && j+1===slots.breaks[brk])
 						{
-							if(i===0)
-							{
-								td.setAttribute('rowspan',days.length);
-								td.appendChild(document.createTextNode('b'));
-								td.appendChild(document.createElement('br'));
-								td.appendChild(document.createTextNode('r'));
-								td.appendChild(document.createElement('br'));
-								td.appendChild(document.createTextNode('e'));
-								td.appendChild(document.createElement('br'));
-								td.appendChild(document.createTextNode('a'));
-								td.appendChild(document.createElement('br'));
-								td.appendChild(document.createTextNode('k'));
-								td.style.textAlign = 'center';
-								td.setAttribute("colspan",arr[i][j-1]);
-								row.appendChild(td);
-							}
+						end = calcTo(start,slots.break_duration);
 						brk++;
 						}
-					else{
-						var namespan = document.createElement('span');
+					else
+						end = calcTo(start,slots.duration);
+					head.appendChild(document.createTextNode(start+'-'+end));
+					start = end;
+					}
+				row.appendChild(head);
+				}
+	thd.appendChild(row);
+	row = document.createElement('tr');
+	}
+	tbl.appendChild(thd);
+	var tbd = document.createElement('tbody');
+	for(var i=0;i<days.length;i++)
+	{	brk=0;
+		for(var j=0;j<slots.count+1;j++)
+		{	var td = document.createElement('td');
+			if(j==0)
+			{
+				td.setAttribute("class","column2");
+				td.appendChild(document.createTextNode(days[i]));
+				row.appendChild(td);
+			}
+			else{
+				td.setAttribute("class","column1");
+				if(slots.breaks.length>brk && j===slots.breaks[brk])
+					{
+						if(i===0)
+						{
+							td.setAttribute('rowspan',days.length);
+							td.appendChild(document.createTextNode('b'));
+							td.appendChild(document.createElement('br'));
+							td.appendChild(document.createTextNode('r'));
+							td.appendChild(document.createElement('br'));
+							td.appendChild(document.createTextNode('e'));
+							td.appendChild(document.createElement('br'));
+							td.appendChild(document.createTextNode('a'));
+							td.appendChild(document.createElement('br'));
+							td.appendChild(document.createTextNode('k'));
+							td.style.textAlign = 'center';
+							td.setAttribute("colspan",arr[i][j-1]);
+							row.appendChild(td);
+						}
+					brk++;
+					}
+				else{
+					var namespan = document.createElement('span');
 					var roomspan = document.createElement('span');
 					td.style.position="relative";
 					roomspan.style.color='red';
@@ -119,13 +110,21 @@ socket.on("start", function(data) {
 					td.setAttribute("colspan",arr[i][j-1]);
 					if(arr[i][j-1]>0)
 					row.appendChild(td);
-						}
-				
-				}
+					}
+
 			}
-			tbd.appendChild(row);
 		}
+		tbd.appendChild(row);
+		row = document.createElement('tr');
 	}
+
+
+
+	tbl.appendChild(tbd);
+	body.appendChild(tbl);
+
+
+}
 	function filterCreate()
 {
 	var body = document.getElementById('tablediv');
