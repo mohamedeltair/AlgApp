@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style/SPLayout.css" />
+  <link rel="stylesheet" type="text/css" href="style/timetable.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="PageContainer">
+
+        <div class="midCol">
+          <div class="CtrlBar1" id="cb1">
+            <button class="CtrlBtn1" href=""><span class="pTxt">My Profile &nbsp;</span><span class="glyphicon glyphicon-user"></span></button>
+            <button class="CtrlBtn2" href=""><span class="ttTxt">Timetable &nbsp;</span><span class="glyphicon glyphicon-calendar"></span></button>
+            <div id="searchContainer" style="height:50px">
+              <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search table ..." title="Type in search parameter">
+            </div>
+            <button class="CtrlBtn3" href=""><span class="loTxt">Log Out &nbsp;</span><span class="glyphicon glyphicon-log-out"></span></button>
+          </div>
+            <div id="root" class="tableContainer">
+		          <div id="tablediv">
+		        </div>
+            <!-- replace masr.js with student timetable
+                <script src="masr.js"></script>
+            -->
+        </div>
+        <div class="modifyBox"></div>
+          </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style/SPLayout.css" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body onload="fillTable();">
+  <div class="PageContainer">
+    <script src="/scripts/NavigationBarHTML.js"></script>
+    <div class="rightCol" id="rc">
+      <div class="CtrlBar2" id="cb2">
+        <div class="status">
+          <div>Hello , HOLMEZ!&nbsp;&nbsp;<span class="glyphicon glyphicon-education"></span></div>
+          <div>Last Login : 16/11/2017</div>
+        </div>
+        <button class="showBtn" id="showICON" title="Show the navigation bar" onclick="show()"><span class="glyphicon glyphicon-th-list"></span></button>
+        <button class="hideBtn" id="hideICON" title="Hide the navigation bar" onclick="hide()"><span class="glyphicon glyphicon-remove"></span></span></button>
+        <script>
+          function hide(){
+            document.getElementById('showICON').style.display="block";
+            document.getElementById('hideICON').style.display="none";
+            document.getElementById('f').style.display="none";
+            document.getElementById('cb2').style.width="100vw";
+            document.getElementById('dw').style.justifyContent="center";
+            document.getElementById('rc').style.width="100vw";
+          }
+
+          function show(){
+            document.getElementById('showICON').style.display="none";
+            document.getElementById('hideICON').style.display="";
+            document.getElementById('f').style.display="";
+            document.getElementById('cb2').style.width="85vw";
+            document.getElementById('dw').style.justifyContent="center";
+            document.getElementById('rc').style.width="85vw";
+          }
+        </script>
+      </div>
+      <div class="DW" id="dw">
+        <div class="profileDW">
+          <div class="field">Name : <span>HOLMEZ</span></div>
+          <div class="field">ID : <span>14p1234</span></div>
+          <div class="field">Registered Courses List :</div>
+          <table class="coursesTable" id="rct">
+            <tr>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Credit Hours</th>
+            </tr>
+
+            <tr>
+              <td>CSE325</td>
+              <td>Agile Software Engineering</td>
+              <td>3</td>
+            </tr>
+
+            <tr>
+              <td>CSE326</td>
+              <td>Software Formal Specifications</td>
+              <td>3</td>
+            </tr>
+          </table>
+          <script type="text/javascript">
+          function fillTable() {
+            //for loop
+            var table = document.getElementById("rct");
+            var row = table.insertRow(1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            cell1.innerHTML = "NEW CELL1";
+            cell2.innerHTML = "NEW CELL2";
+            cell3.innerHTML = "NEW CELL3";
+          }
+          </script>
+          <table id="table"></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

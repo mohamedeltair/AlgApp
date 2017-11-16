@@ -1,0 +1,187 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.PageContainer{
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.leftCol{
+  order: 1;
+  width: 15%;
+  height: 100vh;
+}
+
+.midCol{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.tableContainer{
+  overflow-x: scroll;
+}
+
+.rightCol{
+  order: 2;
+  width:85%;
+  height: 100vh;
+}
+
+.NvBar{
+  background-color: #333;
+  border: 1px solid black;
+  height: 100%;
+}
+
+.showBtn{
+  display: none;
+}
+
+.showBtn , .hideBtn{
+  height: 50px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+.NvBtns .NvBtn , .CtrlBtn1 , .CtrlBtn2 ,.CtrlBtn3{
+  background-color: #333;
+  border: 1px solid black;
+  color: white;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 100%;
+  cursor: pointer;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.CtrlBtn1 , .CtrlBtn2 ,.CtrlBtn3{
+  border:none;
+}
+
+.NvBtns .NvBtn:not(:last-child){
+  border-bottom: none;
+}
+
+.NvBtns .NvBtn:hover , .CtrlBtn1:hover , .CtrlBtn2:hover , .CtrlBtn3:hover{
+  background-color: black;
+  color:orange;
+}
+
+.NvBtns .NvBtn:focus , .CtrlBtn1:focus , .CtrlBtn2:focus , .CtrlBtn3:focus{
+  outline:0;
+}
+
+.CtrlBtn1 , .CtrlBtn2 , .CtrlBtn3{
+  width:10%;
+}
+
+.CtrlBtn1 , .CtrlBtn2{
+  flex: 1;
+}
+
+.CtrlBtn3{
+  flex:1;
+}
+
+.profilePic{
+  width: 50%;
+  height: 15%;
+  border-radius: 60%;
+}
+
+.ppContainer{
+  text-align: center;
+  margin-bottom: 15%;
+  margin-top: 15%;
+}
+
+.CtrlBar1 , .CtrlBar2{
+  background-color: #333;
+  border: 1px solid black;
+  color: orange;
+  height: 52px;
+  width: 100%;
+}
+
+.CtrlBar1{
+  display: flex;
+}
+
+.status{
+  float: right;
+  font-family: 'Poppins', sans-serif;
+}
+
+.DW {
+  display: flex;
+  justify-content: center;
+}
+
+.profileDW {
+  padding: 20px;
+  margin: 40px;
+  border: 1px solid white;
+  border-radius: 10px;
+  text-align: center;
+  width: 1000px;
+  height: 600px;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+.field{
+  text-align: left;
+  margin: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+}
+
+.coursesTable {
+    font-family: 'Poppins', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.coursesTable td, .coursesTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.coursesTable tr:nth-child(odd){background-color: #f2f2f2;}
+
+.coursesTable tr:hover {background-color: #ddd;}
+
+.coursesTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: orange;
+    color: white;
+}
+
+@media screen and (max-width: 700px) {
+    .pTxt , .ttTxt , .loTxt {
+        display: none;
+    }
+}
+
+/*
+@media only screen and (max-width: 700px) {
+  .leftCol{
+    display: none;
+  }
+
+  .rightCol{
+    width: 100vw;
+  }
+  */
+}
