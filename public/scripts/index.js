@@ -26,7 +26,7 @@ socket.on("start", function(data) {
 	filter_icon.style.fontSize="10px";
 	filter_icon.title="Filter days";
 	filter_icon.className="glyphicon glyphicon-filter icon";
-	a.addEventListener("click",myFunction2);
+	a.addEventListener("click",filterDays);
 	filter_icon.style.marginLeft='4px';
 	a.appendChild(filter_icon);
 	head.appendChild(a);
