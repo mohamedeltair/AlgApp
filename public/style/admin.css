@@ -13,11 +13,14 @@
 }
 .nav{
     background-color: rgb(156, 52, 104);
-    margin-top:-7vh;
+    margin-top:-10vh;
     overflow: hidden;
 
 }
-.nav a {
+.a{
+    display: inline-block;
+}
+.nav a, .nav span{
     float: right;
     display: block;
     color: #f2f2f2;
@@ -26,6 +29,13 @@
     text-decoration: none;
     font-family: "Tw Cen MT Condensed";
     font-size: 30px;
+}
+
+.nav span{
+    font-style: italic;
+    font-size: 23px;
+    float:inherit;
+
 }
 .nav a:hover {
     background-color: #ddd;
@@ -52,8 +62,12 @@
     margin-bottom: 1vw;
 }
 .instructors, .students, .courses, .algo, .rooms, .schedules {
-    height: 20vh;
-    width: 10vw;
+
+    max-height: 20vh;
+    max-width: 10vw;
+    min-height: 20vh;
+    min-width: 10vw;
+    opacity: 1;
 
 }
 
@@ -74,6 +88,10 @@
 
 .gen{
     margin-right: -4vw;
+}
+
+.rooms{
+    margin-left: -1vw;
 }
 
 .footer {

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html>
-<head>Login Page
+<html >
+<head>
+	<meta charset="UTF-8">
 	<script src="/socket.io/socket.io.js"></script>
+	<title>Login Page</title>
+	<link rel="stylesheet" href='/style/login.css'>
 </head>
-
 <body>
-<h2>Login Form</h2>
-
-<label>User Name </label>
-<input type="text" name="username" id="username"/>
-<label>Password </label>
-<input type="password" name="password" id="password"/>
-<button type="Login" id="submit" value="Login">Login</button>
-
+<h1>University Timetable Generator</h1>
+<div class="content">
+	<div class="title">Login Form</div>
+	<input type="text" placeholder="User Name" id="username"/>
+	<input type="password" placeholder="Password" id="password"/>
+	<button id="submit">Login</button>
+</div>
 <script type="text/javascript" src="/scripts/Login.js"></script>
 </body>
 </html>
