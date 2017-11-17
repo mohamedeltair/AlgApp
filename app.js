@@ -7,7 +7,7 @@ var express = require('express'),
     http = require('http');
 var session = require('express-session');
 
-
+LoginStatus = false;
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -26,22 +26,9 @@ var listener = io.listen(httpServer);
 listener.sockets.on('connection',
     function(socket){
         socket.emit('connected', {"status": "connected"});
-        socket.on('credentials', function(data) {
-        	var flag = false;
-            var credentials = JSON.parse(fs.readFileSync('./public/files/credentials.txt', 'utf8'));
-            var username = data.username;
-            var password = data.password;
-            for(var i=0; i<credentials.Credentials.length; i++){
-				var object = credentials.Credentials[i];
-				if(object.username == username && object.password == password){
-                    socket.emit('response', {"type": object.type});
-                    flag = true;
-                    break;
-                }
-			}
-			if(!flag) {
-				socket.emit('response', {"type": "invalid"});
-			}
+        socket.on('credentials', function(data){
+            var type = LOGIN (data);
+            socket.emit('response', {"type": type});
         });
 		socket.on("start", function(data) {
 			/*fs.readFile("./public/files/table.txt", 'utf8', function(err, data2) {
@@ -58,7 +45,22 @@ listener.sockets.on('connection',
 		});
     });
 
-
+function LOGIN(data) {
+    var credentials = JSON.parse(fs.readFileSync('./public/files/credentials.txt', 'utf8'));
+    var username = data.username;
+    var password = data.password;
+    for(var i=0; i<credentials.Credentials.length; i++){
+        var object = credentials.Credentials[i];
+        if(object.username == username && object.password == password){
+            //socket.emit('response', {"type": object.type});
+            LoginStatus = true;
+            return object.type;
+        }
+    }
+        //socket.emit('response', {"type": "invalid"});
+        LoginStatus = false;
+        return "invalid";
+}
 var index = require('./routes/index');
 var Login = require('./routes/Login');
 var admin = require('./routes/admin');
