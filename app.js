@@ -7,7 +7,7 @@ var express = require('express'),
     http = require('http');
 var session = require('express-session');
 
-//LoginStatus = false;
+LoginStatus = false;
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -53,7 +53,7 @@ function LOGIN(data) {
         var object = credentials.Credentials[i];
         if(object.username == username && object.password == password){
             //socket.emit('response', {"type": object.type});
-            //LoginStatus = true;
+            LoginStatus = true;
             return object.type;
         }
     }
