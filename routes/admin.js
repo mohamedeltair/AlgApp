@@ -7,7 +7,8 @@ router.get('/', function(req, res, next) {
 		res.render('admin', {});
 	else {
 		console.log("Invalid Login");
-        res.redirect('/');
+        res.render('Login', {});
+
     }
 });
 
