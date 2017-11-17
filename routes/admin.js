@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var app = require(app);
+
 
 router.get('/', function(req, res, next) {
-	if(app.LoginStatus)
+	if(LoginStatus)
 		res.render('admin', {});
 	else {
 		console.log("Invalid Login");
