@@ -91,6 +91,9 @@ function checkAuth (req, res, next) {
         res.render('Login', {});
         return;
     }
+    if(req.url === '/' ){
+        req.session= false;
+    }
 
     next();
 }
