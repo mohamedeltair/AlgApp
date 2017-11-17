@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    req.session = false;
+    req.session.authenticated = false;
     res.render('Login', {});
 });
 

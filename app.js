@@ -92,7 +92,7 @@ function checkAuth (req, res, next) {
         return;
     }
     if(req.url === '/' ){
-        req.session= false;
+        req.session.authenticated = false;
     }
 
     next();
