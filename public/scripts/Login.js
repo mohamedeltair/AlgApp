@@ -8,7 +8,7 @@ function Validate(){
 }
 socket.on('response', function(data) {
 	if(data.type == "invalid"){
-        alert(data.status);
+        alert(data.type);
 	}
 	else if(data.type == "admin")
 		window.location.href= site+"/admin";

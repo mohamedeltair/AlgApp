@@ -5,7 +5,7 @@ var express = require('express'),
     path = require('path'),
     fs = require('fs'),
     http = require('http');
-
+var session = require('express-session');
 
 
 var app = express();
@@ -58,6 +58,7 @@ listener.sockets.on('connection',
 		});
     });
 
+
 var index = require('./routes/index');
 var Login = require('./routes/Login');
 var admin = require('./routes/admin');
@@ -72,6 +73,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/style', express.static(path.join(__dirname, '/views/style')));
+app.use(session({secret: 'ssshhhhh'}));
 
 app.use('/index', index);
 app.use('/', Login);
@@ -83,3 +85,12 @@ app.use(function(req, res, next) {
     err.status=404;
     next(err);
 });
+
+function checkAuth (req, res, next) {
+    if(req.url !== '/' && (!req.session || !req.session.authenticated)) {
+        res.render('Login', {});
+        return;
+    }
+
+    next();
+}
