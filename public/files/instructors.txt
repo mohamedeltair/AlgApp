@@ -1,0 +1,11 @@
+{
+"instructors":
+[
+{"name":"AHMED","userName":"AHMED","password":"1234","sessions":[1,2,8,9,10,11]
+,"maxHours":6},
+{"name":"MOHAMED","userName":"MOHAMED","password":"1234","sessions":[3,4,12,13,14,16]
+,"maxHours":6},
+{"name":"ALI","userName":"ALI","password":"1234","sessions":[0,5,6,7,15,17]
+,"maxHours":6}
+]
+}

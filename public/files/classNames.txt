@@ -1,0 +1,15 @@
+{
+"classNames":
+{
+"CESS Junior":{
+"students" : [
+{"name":"ahmed","userName":"ahmed","password":"1234","preferredDay":"Saturday"},
+{"name":"mohamed","userName":"mohamed","password":"1234","preferredDay":"Saturday"},
+{"name":"ali","userName":"ali","password":"1234","preferredDay":"Sunday"},
+{"name":"sayed","userName":"sayed","password":"1234","preferredDay":"Saturday"},
+{"name":"mohey","userName":"mohey","password":"1234","preferredDay":"Saturday"},
+{"name":"mohsen","userName":"mohsen","password":"1234","preferredDay":"Sunday"}
+]
+}
+}
+}

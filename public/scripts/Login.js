@@ -12,5 +12,7 @@ socket.on('response', function(data) {
 	}
 	else if(data.type == "admin")
 		window.location.href= site+"/admin";
+	else if(data.type === "student" || data.type === "instructor")
+		window.location.href= site+"/myprofile";
 });
 document.getElementById("submit").addEventListener("click", Validate);

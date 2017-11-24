@@ -1,7 +1,14 @@
 var socket = io.connect();
 socket.emit("start", {});
+
+//socket.emit('generate', {});
+socket.on("trivial", function(data) {
+	alert(data.d);
+});
 socket.on("start", function(data) {
 	var courses = data.table;
+	//console.log(courses);
+	//alert(courses);
 	var days = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday'];
 	var slots = {start:'08:00',duration:'1:00',count:15,breaks:[4,8,12],break_duration:'0:20'};
 
@@ -12,7 +19,7 @@ socket.on("start", function(data) {
 	tbl.style.zIndex='1';
 	tbl.setAttribute("id","myTable");
 
-  var thd = document.createElement('thead');
+	var thd = document.createElement('thead');
 	var row = document.createElement('tr');
 	thd.setAttribute("class","ant-table-thead");
 	var head = document.createElement('th')
@@ -61,12 +68,15 @@ socket.on("start", function(data) {
 	var tbd = document.createElement('tbody');
 	for(var i=0;i<days.length;i++)
 	{	brk=0;
+		row = document.createElement('tr');
+		row.setAttribute("id", i);
 		for(var j=0;j<slots.count+1;j++)
 		{	var td = document.createElement('td');
 			if(j==0)
 			{
 				td.setAttribute("class","column2");
 				td.appendChild(document.createTextNode(days[i]));
+				td.setAttribute("id", "st"+i);
 				row.appendChild(td);
 			}
 			else{
@@ -270,25 +280,70 @@ function searchTable() {
 			tr[i].style.display = "";
   }
 }
+function removebreaks()
+{
+	
+	
+	//console.log(inserted);
+	for(var i=3;i<tr.length;i++){
+			if(inserted[i])
+			{  
+				var k=0,cnt=0;
+				for(var j=0;j<tr[i].childNodes.length;j++)
+				{
+					if(k===slots.breaks[cnt])
+					{
+						tr[i].removeChild(tr[i].childNodes[j]);
+						cnt++;
+						k++;
+					}
+					k+=tr[i].childNodes[j].colSpan;
+					
+				}
+				inserted[i]=false;
+			}
+	}
+}
+function insertbreaks(i)
+{
+	 var tr = document.getElementById("myTable").getElementsByTagName("tr");
+	 var k=0,cnt=0;
+	for(var j=0;j<tr[i].children.length;j++){
+			if(k===slots.breaks[cnt]){
+			var ntd = document.createElement("td");
+			ntd.appendChild(document.createTextNode('break'));
+			tr[i].insertBefore(ntd,tr[i].children[j]);
+			cnt++;
+			j++;
+			k++;
+			}
+			k+=tr[i].children[j].colSpan;
+			}
+}
 function fdays()
 {
 	var tr = document.getElementById("myTable").getElementsByTagName("tr");
+	var z=true;
 	for(var i=0;i<days.length;i++)
 	{
 		var checkbox = document.getElementById("chk"+i);
-		console.log(checkbox.checked);
 		if(checkbox.checked)
-		{tr[i+2].style.display = "";
-			console.log('derp');
+		{
+			if(i===0){z=false;removebreaks();}
+			else if(z && !inserted[i+2]){
+			insertbreaks(i+2);
+			inserted[i+2]=true;
+			}
+			tr[i+2].style.display = "";
 		}else
 		{tr[i+2].style.display = "none";
-			console.log('herp');
 		}
 	}
 }
 function rdays()
 {
 	var tr = document.getElementById("myTable").getElementsByTagName("tr");
+	removebreaks();
 	for(var i=0;i<days.length;i++)
 	{
 		var checkbox = document.getElementById("chk"+i);
@@ -400,6 +455,10 @@ window.onclick = function(event) {
 }
 	tableCreate();
 	document.getElementById("myInput").addEventListener("keyup", searchTable);
+	var tr = document.getElementById("myTable").getElementsByTagName("tr");
+	var inserted = [];
+	for(var i=0;i<tr.length;i++)
+		inserted.push(false);
 	filterCreate();
 	var sub = ["", "Agile", "Microcontrollers", "HR", "AI", "Networks", "Formal"];
 
