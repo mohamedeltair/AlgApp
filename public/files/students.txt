@@ -1,10 +1,16 @@
 {"students":
 [
-{"name":"ahmed","userName":"ahmed","password":"1234","section":0,"preferredDay":"Saturday"},
-{"name":"mohamed","userName":"mohamed","password":"1234","section":0,"preferredDay":"Saturday"},
-{"name":"ali","userName":"ali","password":"1234","section":0,"preferredDay":"Sunday"},
-{"name":"sayed","userName":"sayed","password":"1234","section":1,"preferredDay":"Saturday"},
-{"name":"mohey","userName":"mohey","password":"1234","section":1,"preferredDay":"Saturday"},
-{"name":"mohsen","userName":"mohsen","password":"1234","section":1,"preferredDay":"Sunday"}
+{"name":"ahmed","userName":"ahmed","password":"1234","section":0,"preferredDay":"Saturday",
+"courses":["OOAD", "Signals and Systems", "Operating systems", "Human Resource Management", "Software Engineering II", "Thermodynamics"]},
+{"name":"mohamed","userName":"mohamed","password":"1234","section":0,"preferredDay":"Saturday",
+"courses":["OOAD", "Signals and Systems", "Operating systems", "Human Resource Management", "Software Engineering II", "Thermodynamics"]},
+{"name":"ali","userName":"ali","password":"1234","section":0,"preferredDay":"Sunday",
+"courses":["OOAD", "Signals and Systems", "Operating systems", "Human Resource Management", "Software Engineering II", "Thermodynamics"]},
+{"name":"sayed","userName":"sayed","password":"1234","section":1,"preferredDay":"Saturday",
+"courses":["OOAD", "Signals and Systems", "Operating systems", "Human Resource Management", "Software Engineering II", "Thermodynamics"]},
+{"name":"mohey","userName":"mohey","password":"1234","section":1,"preferredDay":"Saturday",
+"courses":["OOAD", "Signals and Systems", "Operating systems", "Human Resource Management", "Software Engineering II", "Thermodynamics"]},
+{"name":"mohsen","userName":"mohsen","password":"1234","section":1,"preferredDay":"Sunday",
+"courses":["OOAD", "Signals and Systems", "Operating systems", "Human Resource Management", "Software Engineering II", "Thermodynamics"]}
 ]
 }

@@ -1,12 +1,12 @@
 {
 "courses":
-{
-"OOAD":{"className":"CESS Junior"},
-"Signals and Systems":{"className":"CESS Junior"},
-"Operating systems":{"className":"CESS Junior"},
-"Human Resource Management":{"className":"CESS Junior"},
-"Software Engineering II":{"className":"CESS Junior"},
-"Thermodynamics":{"className":"CESS Junior"}
-}
+[
+{"name":"OOAD","className":"CESS Junior"},
+{"name":"Signals and Systems","className":"CESS Junior"},
+{"name":"Operating systems","className":"CESS Junior"},
+{"name":"Human Resource Management","className":"CESS Junior"},
+{"name":"Software Engineering II","className":"CESS Junior"},
+{"name":"Thermodynamics","className":"CESS Junior"}
+]
 }
 

@@ -1,9 +1,9 @@
 {
 "rooms":
-[{"ID":"911","type":"Lecture"},
-{"ID":"912","type":"Lecture"},
-{"ID":"Emb. Lab","type":"Lab"},
-{"ID":"923","type":"Section"},
-{"ID":"924","type":"Section"}
+[{"name":"911","type":"Lecture"},
+{"name":"912","type":"Lecture"},
+{"name":"Emb. Lab","type":"Lab"},
+{"name":"923","type":"Section"},
+{"name":"924","type":"Section"}
 ]
 }

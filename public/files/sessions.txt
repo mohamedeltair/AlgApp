@@ -3,60 +3,77 @@
 [
 {"ID":0,"course":"Operating systems" ,"slots":3,
 "instructor": "ALI",
-"section":0,"type":"Lecture"},
+"section":0,"type":"Lecture", "startStudent":0, "endStudent":5},
+
 {"ID":1,"course":"Human Resource Management" ,"slots":3,
 "instructor": "AHMED",
-"section":0,"type":"Lecture"
+"section":0,"type":"Lecture", "startStudent":0, "endStudent":5
 },
+
 {"ID":2,"course":"Signals and Systems" ,"slots":3,
 "instructor": "AHMED",
-"section":0,"type":"Lecture"},
+"section":0,"type":"Lecture", "startStudent":0, "endStudent":5},
+
 {"ID":3,"course":"OOAD" ,"slots":3,
 "instructor": "MOHAMED",
-"section":0,"type":"Lecture"},
+"section":0,"type":"Lecture", "startStudent":0, "endStudent":5},
+
 {"ID":4,"course":"Software Engineering II", "slots":3,
 "instructor": "MOHAMED",
-"section":0,"type":"Lecture"},
+"section":0,"type":"Lecture", "startStudent":0, "endStudent":5},
+
 {"ID":5,"course":"Thermodynamics", "slots":3,
 "instructor": "ALI",
-"section":0,"type":"Lecture"},
+"section":0,"type":"Lecture", "startStudent":0, "endStudent":5},
+
 {"ID":6,"course":"Operating systems" ,"slots":2,
 "instructor": "ALI",
-"section":0,"type":"Section"},
+"section":0,"type":"Section", "startStudent":0, "endStudent":2},
+
 {"ID":7,"course":"Operating systems" ,"slots":2,
 "instructor": "ALI",
-"section":1,"type":"Section"},
+"section":1,"type":"Section", "startStudent":3, "endStudent":5},
+
 {"ID":8,"course":"Human Resource Management" ,"slots":2,
 "instructor": "AHMED",
-"section":0,"type":"Section"
+"section":0,"type":"Section", "startStudent":0, "endStudent":2
 },
+
 {"ID":9,"course":"Human Resource Management" ,"slots":2,
 "instructor": "AHMED",
-"section":1,"type":"Section"
+"section":1,"type":"Section", "startStudent":3, "endStudent":5
 },
+
 {"ID":10,"course":"Signals and Systems" ,"slots":2,
 "instructor": "AHMED",
-"section":0,"type":"Section"},
+"section":0,"type":"Section", "startStudent":0, "endStudent":2},
+
 {"ID":11,"course":"Signals and Systems" ,"slots":2,
 "instructor": "AHMED",
-"section":1,"type":"Section"},
+"section":1,"type":"Section", "startStudent":3, "endStudent":5},
+
 {"ID":12,"course":"OOAD" ,"slots":2,
 "instructor": "MOHAMED",
-"section":0,"type":"Section"},
+"section":0,"type":"Section", "startStudent":0, "endStudent":2},
+
 {"ID":13,"course":"OOAD" ,"slots":2,
 "instructor": "MOHAMED",
-"section":1,"type":"Section"},
+"section":1,"type":"Section", "startStudent":3, "endStudent":5},
+
 {"ID":14,"course":"Software Engineering II", "slots":2,
 "instructor": "MOHAMED",
-"section":0,"type":"Section"},
+"section":0,"type":"Section", "startStudent":0, "endStudent":2},
+
 {"ID":15,"course":"Thermodynamics", "slots":2,
 "instructor": "ALI",
-"section":0,"type":"Section"},
+"section":0,"type":"Section", "startStudent":0, "endStudent":2},
+
 {"ID":16,"course":"Software Engineering II", "slots":2,
 "instructor": "MOHAMED",
-"section":1,"type":"Section"},
+"section":1,"type":"Section", "startStudent":3, "endStudent":5},
+
 {"ID":17,"course":"Thermodynamics", "slots":2,
 "instructor": "ALI",
-"section":1,"type":"Section"}
+"section":1,"type":"Section", "startStudent":3, "endStudent":5}
 ]
 }

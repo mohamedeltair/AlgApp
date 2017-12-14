@@ -5,17 +5,78 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/style/timetable.css" />
 <style>
-.bott {
-	display: inline-block;
-	margin= 10vw;
+
+.input {
+  background-position: 10vw 12vh;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  width: 20vw;
 }
-.divi {
-	display: inline-block;
-	width: 5vw;
+#subjects, #types, #instructors, #rooms {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: 10vh;
+  max-width: 20vw;
+  overflow:auto;
+}
+#subjects li, #types li, #instructors li, #rooms li {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+}
+.space {
+  width: 1vw;
+  display: inline-block;
+}
+.next {
+  display: inline-block;
+  vertical-align:top;
+  padding: 12px 20px 12px 20px;
+}
+button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+#special {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 10px 10px 10px 10px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: inline-block;
+  cursor: default;
 }
 </style>
 </head>
 <body>
+<div>
 
 		<div id="searchContainer" style="height:50px">
 			<input type="text" id="myInput" onkeyup="searchTable()" placeholder="Search table ..." title="Type in search parameter">
@@ -23,24 +84,41 @@
 		
 		<div id="tablediv">
 		</div>
-		<h3 class="bott">Modify Schedule</h3>
-		<div class="divi"></div>
-		<h3 class="bott">Day</h3>
-		<select class="bott" id="day"></select>
-		<div class="divi"></div>
-		<h3 class="bott">Course</h3>
-		<select class="bott" id="sub"></select>
-		<div class="divi"></div>
-		<h3 class="bott">Room</h3>
-		<select class="bott" id="room"></select>
-		<div class="divi"></div>
-		<h3 class="bott">First Slot</h3>
-		<select class="bott" id="fs"></select>
-		<div class="divi"></div>
-		<h3 class="bott">Last Slot</h3>
-		<select class="bott" id="ls"></select>
-		<div class="divi"></div>
-		<button id="modify">Modify</button>
+		
+    <div class="next">
+    <input type="text" id="subjectsInput" placeholder="Search for courses.." class="input">
+    <ul id="subjects">
+    </ul>
+    </div>
+    
+    
+    <div class="next">
+    <input type="text" id="typesInput" placeholder="Search for types.." class="input">
+    <ul id="types">
+    </ul>
+    </div>
+    
+    
+    <div class="next">
+    <input type="text" id="instructorsInput" placeholder="Search for instructors.." class="input">
+    <ul id="instructors">
+    </ul>
+    </div>
+    
+    
+    <div class="next">
+    <input type="text" id="roomsInput" placeholder="Search for rooms.." class="input">
+    <ul id="rooms">
+    </ul>
+    </div>
+    
+    <div class="next">
+      <div id="special">
+      </div>
+    </div>
+    
+    <img src="https://lh3.ggpht.com/2SLIU0xJ140Gmo8o3SrTQP1ws7646uBUX4AFj1gvBs4-ZXVo-LHrUsI_8teAozZsLg=w300" width="80vw" height="80vh" style="padding:12px 12px 12px 12px" id="bin">
+    
 		<button id="back">Back</button>
 		
 </div>		
